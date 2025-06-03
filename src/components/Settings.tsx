@@ -35,13 +35,18 @@ const Settings = () => {
   ];
 
   const handleToggle = (section: string, key: string) => {
-    setSettings(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section as keyof typeof prev],
-        [key]: !prev[section as keyof typeof prev][key as keyof typeof prev[section as keyof typeof prev]]
-      }
-    }));
+    setSettings(prev => {
+      const sectionData = prev[section as keyof typeof prev] as any;
+      const currentValue = sectionData[key];
+      
+      return {
+        ...prev,
+        [section]: {
+          ...sectionData,
+          [key]: !currentValue
+        }
+      };
+    });
   };
 
   const handleSelectChange = (section: string, key: string, value: string) => {
