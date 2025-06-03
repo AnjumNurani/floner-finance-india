@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Onboarding from '../components/Onboarding';
 import Auth from '../components/Auth';
 import Dashboard from '../components/Dashboard';
@@ -13,9 +13,9 @@ import Subscription from '../components/Subscription';
 import PrivacyPolicy from '../components/PrivacyPolicy';
 import TermsOfService from '../components/TermsOfService';
 import Navbar from '../components/Navbar';
-import { UserProvider, useUser } from '../context/UserContext';
+import { useUser } from '../context/UserContext';
 
-const AppRoutes = () => {
+const Index = () => {
   const { user, isOnboarded } = useUser();
 
   if (!isOnboarded) {
@@ -44,16 +44,6 @@ const AppRoutes = () => {
         </Routes>
       </div>
     </div>
-  );
-};
-
-const Index = () => {
-  return (
-    <UserProvider>
-      <Router>
-        <AppRoutes />
-      </Router>
-    </UserProvider>
   );
 };
 
