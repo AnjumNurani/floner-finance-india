@@ -27,7 +27,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-emerald-50">
       <Navbar />
       <div className="pt-16">
         <Routes>
