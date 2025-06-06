@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +20,32 @@ export default {
 		},
 		extend: {
 			colors: {
+				// Core nude beige and jade green colors
+				'nude': {
+					50: '#f9f6f2',
+					100: '#f3ede4',
+					200: '#e6d9c7',
+					300: '#d8c4aa',
+					400: '#c9ad8c',
+					500: '#ba976f',
+					600: '#a98261',
+					700: '#8c6a52',
+					800: '#735648',
+					900: '#60483f'
+				},
+				'jade': {
+					50: '#edf7f3',
+					100: '#d3ebe1',
+					200: '#aad8c6',
+					300: '#80c4ab',
+					400: '#54ab8c',
+					500: '#3a9373',
+					600: '#2c775c',
+					700: '#265f4b',
+					800: '#224d3e',
+					900: '#1d3f34'
+				},
+				// Preserve default Tailwind structure but map to our custom colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

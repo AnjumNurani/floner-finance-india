@@ -10,7 +10,7 @@ const StarFLogo: React.FC<StarFLogoProps> = ({ size = 32, className = "" }) => {
   return (
     <div className={`inline-flex items-center justify-center ${className}`}>
       <div
-        className="bg-green-200 rounded-lg flex items-center justify-center shadow-sm border border-green-300"
+        className="bg-nude-100 rounded-lg flex items-center justify-center shadow-sm border border-nude-200"
         style={{ 
           width: size, 
           height: size,
@@ -18,7 +18,7 @@ const StarFLogo: React.FC<StarFLogoProps> = ({ size = 32, className = "" }) => {
         }}
       >
         <span 
-          className="font-bold text-green-700"
+          className="font-bold text-jade-600"
           style={{ 
             fontFamily: 'Georgia, serif',
             lineHeight: 1
