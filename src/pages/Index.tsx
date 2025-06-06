@@ -27,7 +27,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-green-50">
       <Navbar />
       <div className="pt-16">
         <Routes>
