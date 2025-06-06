@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Onboarding from '../components/Onboarding';
 import Auth from '../components/Auth';
@@ -27,7 +27,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-emerald-50">
+    <div className="min-h-screen bg-stone-50">
       <Navbar />
       <div className="pt-16">
         <Routes>
