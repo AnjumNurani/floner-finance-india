@@ -13,6 +13,7 @@ import Subscription from '../components/Subscription';
 import PrivacyPolicy from '../components/PrivacyPolicy';
 import TermsOfService from '../components/TermsOfService';
 import Navbar from '../components/Navbar';
+import BottomNavigation from '../components/BottomNavigation';
 import { useUser } from '../context/UserContext';
 
 const Index = () => {
@@ -29,7 +30,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-nude-50">
       <Navbar />
-      <div className="pt-16">
+      <div className="pt-16 pb-16 md:pb-0">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/cashflow" element={<CashFlow />} />
@@ -43,6 +44,7 @@ const Index = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
+      <BottomNavigation />
     </div>
   );
 };
