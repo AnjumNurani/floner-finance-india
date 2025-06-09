@@ -33,7 +33,7 @@ const Auth = () => {
     };
 
     // Save to localStorage and context
-    localStorage.setItem('floner-user', JSON.stringify(user));
+    localStorage.setItem('enro-user', JSON.stringify(user));
     setUser(user);
   };
 
@@ -47,7 +47,7 @@ const Auth = () => {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="text-4xl mb-2">💰</div>
-          <h1 className="text-3xl font-bold text-green-600">Floner</h1>
+          <h1 className="text-3xl font-bold text-green-600">Enro</h1>
           <p className="text-gray-600">Your Smart Finance Manager</p>
         </div>
 
@@ -159,12 +159,12 @@ const Auth = () => {
                 const demoUser = {
                   id: 'demo',
                   name: 'Demo User',
-                  email: 'demo@floner.com',
+                  email: 'demo@enro.com',
                   phone: '+91 9876543210',
                   subscriptionPlan: 'free' as const,
                   connectedAccounts: 1
                 };
-                localStorage.setItem('floner-user', JSON.stringify(demoUser));
+                localStorage.setItem('enro-user', JSON.stringify(demoUser));
                 setUser(demoUser);
               }}
               className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition-all duration-200"
