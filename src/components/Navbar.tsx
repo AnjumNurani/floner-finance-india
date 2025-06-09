@@ -1,18 +1,24 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import StarFLogo from './StarFLogo';
+import HelpModal from './HelpModal';
 import { Menu, X, HelpCircle } from 'lucide-react';
 
 const Navbar = () => {
   const { user, setUser } = useUser();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('enro-user');
     setUser(null);
+  };
+
+  const handleHelpClick = () => {
+    setIsHelpModalOpen(true);
+    setIsSidebarOpen(false);
   };
 
   return (
@@ -87,10 +93,13 @@ const Navbar = () => {
                   >
                     Privacy Policy
                   </Link>
-                  <div className="flex items-center px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 cursor-pointer">
+                  <button
+                    onClick={handleHelpClick}
+                    className="flex items-center w-full px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 cursor-pointer"
+                  >
                     <HelpCircle className="w-4 h-4 mr-2" />
                     Help
-                  </div>
+                  </button>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-rose-50"
@@ -172,10 +181,13 @@ const Navbar = () => {
                   >
                     Privacy Policy
                   </Link>
-                  <div className="flex items-center px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg cursor-pointer">
+                  <button
+                    onClick={handleHelpClick}
+                    className="flex items-center w-full px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg cursor-pointer"
+                  >
                     <HelpCircle className="w-4 h-4 mr-2" />
                     Help
-                  </div>
+                  </button>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-rose-50 rounded-lg"
@@ -188,6 +200,8 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      <HelpModal isOpen={isHelpModalOpen} onClose={() => setIsHelpModalOpen(false)} />
     </>
   );
 };

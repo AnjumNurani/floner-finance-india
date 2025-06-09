@@ -148,9 +148,9 @@ const PrivacyPolicy = () => {
                   please contact us:
                 </p>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><strong>Email:</strong> privacy@floner.com</p>
+                  <p><strong>Email:</strong> privacy@enro.com</p>
                   <p><strong>Phone:</strong> +91 98765 43210</p>
-                  <p><strong>Address:</strong> Floner Technologies Pvt. Ltd.<br />
+                  <p><strong>Address:</strong> Enro Technologies Pvt. Ltd.<br />
                   123 Finance Street, Mumbai, Maharashtra 400001, India</p>
                 </div>
               </div>
