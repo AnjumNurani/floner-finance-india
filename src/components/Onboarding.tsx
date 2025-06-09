@@ -8,7 +8,7 @@ const Onboarding = () => {
 
   const steps = [
     {
-      title: "Welcome to Floner",
+      title: "Welcome to Enro",
       description: "Your personal finance manager for smarter money decisions",
       image: "💰",
       color: "from-green-400 to-emerald-500"
@@ -37,13 +37,13 @@ const Onboarding = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      localStorage.setItem('floner-onboarded', 'true');
+      localStorage.setItem('enro-onboarded', 'true');
       setIsOnboarded(true);
     }
   };
 
   const handleSkip = () => {
-    localStorage.setItem('floner-onboarded', 'true');
+    localStorage.setItem('enro-onboarded', 'true');
     setIsOnboarded(true);
   };
 
@@ -93,9 +93,9 @@ const Onboarding = () => {
           </div>
         </div>
 
-        {/* Floner Branding */}
+        {/* Enro Branding */}
         <div className="text-center mt-8">
-          <h2 className="text-2xl font-bold text-green-600">Floner</h2>
+          <h2 className="text-2xl font-bold text-green-600">Enro</h2>
           <p className="text-gray-600">Smart Finance, Smarter You</p>
         </div>
       </div>

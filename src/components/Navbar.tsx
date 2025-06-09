@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('floner-user');
+    localStorage.removeItem('enro-user');
     setUser(null);
   };
 
@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                 <StarFLogo size={36} />
-                <span className="text-xl font-bold text-jade-600">Floner</span>
+                <span className="text-xl font-bold text-jade-600">Enro</span>
               </Link>
             </div>
 
