@@ -3,19 +3,12 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import StarFLogo from './StarFLogo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, HelpCircle } from 'lucide-react';
 
 const Navbar = () => {
   const { user, setUser } = useUser();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const navigation = [
-    { name: 'Dashboard', href: '/', icon: '🏠' },
-    { name: 'Cash Flow', href: '/cashflow', icon: '📊' },
-    { name: 'Budget', href: '/budget', icon: '🎯' },
-    { name: 'Tax Calculator', href: '/tax-calculator', icon: '🧮' },
-  ];
 
   const handleLogout = () => {
     localStorage.removeItem('floner-user');
@@ -33,24 +26,6 @@ const Navbar = () => {
                 <StarFLogo size={36} />
                 <span className="text-xl font-bold text-jade-600">Floner</span>
               </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    location.pathname === item.href
-                      ? 'bg-jade-100 text-jade-700'
-                      : 'text-jade-600 hover:text-jade-700 hover:bg-nude-100'
-                  }`}
-                >
-                  <span>{item.icon}</span>
-                  <span>{item.name}</span>
-                </Link>
-              ))}
             </div>
 
             {/* User Menu */}
@@ -94,6 +69,28 @@ const Navbar = () => {
                   >
                     Settings
                   </Link>
+                  <Link
+                    to="/subscription"
+                    className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100"
+                  >
+                    Plan Upgrade
+                  </Link>
+                  <Link
+                    to="/terms"
+                    className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100"
+                  >
+                    Terms of Service
+                  </Link>
+                  <Link
+                    to="/privacy"
+                    className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <div className="flex items-center px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 cursor-pointer">
+                    <HelpCircle className="w-4 h-4 mr-2" />
+                    Help
+                  </div>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-rose-50"
@@ -127,27 +124,8 @@ const Navbar = () => {
           {/* Sidebar */}
           <div className="fixed top-16 left-0 w-64 h-full bg-nude-50 shadow-lg border-r border-nude-200 transform transition-transform duration-300">
             <div className="p-4">
-              {/* Navigation Links */}
-              <div className="space-y-2">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsSidebarOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      location.pathname === item.href
-                        ? 'bg-jade-100 text-jade-700'
-                        : 'text-jade-600 hover:bg-nude-100'
-                    }`}
-                  >
-                    <span className="text-lg">{item.icon}</span>
-                    <span>{item.name}</span>
-                  </Link>
-                ))}
-              </div>
-
               {/* User Section */}
-              <div className="mt-8 pt-4 border-t border-nude-200">
+              <div className="mb-8">
                 <div className="flex items-center space-x-3 px-4 py-3">
                   <div className="w-10 h-10 bg-jade-100 rounded-full flex items-center justify-center text-jade-700 font-semibold">
                     {user?.name.charAt(0).toUpperCase()}
@@ -178,8 +156,26 @@ const Navbar = () => {
                     onClick={() => setIsSidebarOpen(false)}
                     className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg"
                   >
-                    Subscription
+                    Plan Upgrade
                   </Link>
+                  <Link
+                    to="/terms"
+                    onClick={() => setIsSidebarOpen(false)}
+                    className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg"
+                  >
+                    Terms of Service
+                  </Link>
+                  <Link
+                    to="/privacy"
+                    onClick={() => setIsSidebarOpen(false)}
+                    className="block px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <div className="flex items-center px-4 py-2 text-sm text-jade-600 hover:bg-nude-100 rounded-lg cursor-pointer">
+                    <HelpCircle className="w-4 h-4 mr-2" />
+                    Help
+                  </div>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-rose-50 rounded-lg"

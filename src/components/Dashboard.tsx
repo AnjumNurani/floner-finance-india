@@ -10,13 +10,6 @@ const Dashboard = () => {
   const savingsRate = monthlyIncome > 0 ? ((monthlyIncome - monthlyExpense) / monthlyIncome) * 100 : 0;
   const financialHealthScore = Math.min(100, Math.max(0, 50 + savingsRate));
 
-  const quickActions = [
-    { name: 'Add Transaction', icon: '➕', color: 'bg-nude-100', href: '/add-transaction' },
-    { name: 'View Budget', icon: '🎯', color: 'bg-nude-200', href: '/budget' },
-    { name: 'Calculate Tax', icon: '🧮', color: 'bg-nude-100', href: '/tax-calculator' },
-    { name: 'Cash Flow', icon: '📊', color: 'bg-nude-200', href: '/cashflow' },
-  ];
-
   const expenseCategories = transactions
     .filter(t => t.type === 'expense')
     .reduce((acc, t) => {
@@ -71,20 +64,6 @@ const Dashboard = () => {
               <p className="text-lg font-semibold text-rose-600">-₹{monthlyExpense.toLocaleString('en-IN')}</p>
             </div>
           </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {quickActions.map((action, index) => (
-            <Link
-              key={action.name}
-              to={action.href}
-              className={`${action.color} rounded-xl p-4 text-jade-600 text-center transform transition-all duration-200 hover:scale-105 shadow-md border border-nude-200`}
-            >
-              <div className="text-2xl mb-2">{action.icon}</div>
-              <p className="text-sm font-medium">{action.name}</p>
-            </Link>
-          ))}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
