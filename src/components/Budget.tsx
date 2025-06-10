@@ -1,6 +1,7 @@
-
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import AddBudgetModal from './AddBudgetModal';
+import AddGoalModal from './AddGoalModal';
 
 interface BudgetItem {
   id: string;
@@ -22,6 +23,8 @@ interface Goal {
 const Budget = () => {
   const { user } = useUser();
   const [activeTab, setActiveTab] = useState('budget');
+  const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
+  const [showAddGoalModal, setShowAddGoalModal] = useState(false);
 
   const [budgets, setBudgets] = useState<BudgetItem[]>([
     { id: '1', category: 'Food & Dining', budgeted: 8000, spent: 5200, icon: '🍽️' },
@@ -36,6 +39,29 @@ const Budget = () => {
     { id: '2', title: 'Vacation to Goa', target: 25000, current: 12000, deadline: '2024-08-15', icon: '🏖️' },
     { id: '3', title: 'New Laptop', target: 80000, current: 45000, deadline: '2024-09-30', icon: '💻' },
   ]);
+
+  const handleAddBudget = (newBudget: { category: string; budgeted: number; icon: string }) => {
+    const budget: BudgetItem = {
+      id: Date.now().toString(),
+      category: newBudget.category,
+      budgeted: newBudget.budgeted,
+      spent: 0,
+      icon: newBudget.icon,
+    };
+    setBudgets([...budgets, budget]);
+  };
+
+  const handleAddGoal = (newGoal: { title: string; target: number; deadline: string; icon: string }) => {
+    const goal: Goal = {
+      id: Date.now().toString(),
+      title: newGoal.title,
+      target: newGoal.target,
+      current: 0,
+      deadline: newGoal.deadline,
+      icon: newGoal.icon,
+    };
+    setGoals([...goals, goal]);
+  };
 
   const canManageBudgets = user?.subscriptionPlan !== 'free';
 
@@ -159,7 +185,10 @@ const Budget = () => {
           <div className="bg-nude-50 rounded-xl shadow-lg p-6 border border-nude-200">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-jade-800">Budget Categories</h2>
-              <button className="bg-jade-500 text-nude-50 px-4 py-2 rounded-lg hover:bg-jade-600 transition-colors duration-200">
+              <button 
+                onClick={() => setShowAddBudgetModal(true)}
+                className="bg-jade-500 text-nude-50 px-4 py-2 rounded-lg hover:bg-jade-600 transition-colors duration-200"
+              >
                 + Add Category
               </button>
             </div>
@@ -247,7 +276,10 @@ const Budget = () => {
           <div className="bg-nude-50 rounded-xl shadow-lg p-6 border border-nude-200">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-jade-800">Financial Goals</h2>
-              <button className="bg-jade-500 text-nude-50 px-4 py-2 rounded-lg hover:bg-jade-600 transition-colors duration-200">
+              <button 
+                onClick={() => setShowAddGoalModal(true)}
+                className="bg-jade-500 text-nude-50 px-4 py-2 rounded-lg hover:bg-jade-600 transition-colors duration-200"
+              >
                 + Add Goal
               </button>
             </div>
@@ -311,6 +343,19 @@ const Budget = () => {
           </div>
         </div>
       )}
+
+      {/* Modals */}
+      <AddBudgetModal
+        isOpen={showAddBudgetModal}
+        onClose={() => setShowAddBudgetModal(false)}
+        onAdd={handleAddBudget}
+      />
+      
+      <AddGoalModal
+        isOpen={showAddGoalModal}
+        onClose={() => setShowAddGoalModal(false)}
+        onAdd={handleAddGoal}
+      />
     </div>
   );
 };
