@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import { useToast } from '@/hooks/use-toast';
 
 const AddTransaction = () => {
   const { addTransaction } = useUser();
+  const { toast } = useToast();
   const [type, setType] = useState<'income' | 'expense'>('expense');
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
@@ -19,6 +21,12 @@ const AddTransaction = () => {
         category,
         date: new Date().toLocaleDateString('en-GB'),
         account: 'SBI Main'
+      });
+      
+      // Show success toast
+      toast({
+        title: "Transaction Added Successfully!",
+        description: `₹${amount} ${type} has been recorded.`,
       });
       
       // Reset form
