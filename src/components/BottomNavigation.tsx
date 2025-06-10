@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, TrendingUp, Target, Calculator, User } from 'lucide-react';
+import { Home, TrendingUp, Target, Calculator, Plus } from 'lucide-react';
 
 const BottomNavigation = () => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const BottomNavigation = () => {
     { name: 'Cash Flow', href: '/cashflow', icon: TrendingUp },
     { name: 'Budget', href: '/budget', icon: Target },
     { name: 'Tax Calc', href: '/tax-calculator', icon: Calculator },
-    { name: 'Profile', href: '/profile', icon: User },
+    { name: 'Add', href: '/add-transaction', icon: Plus },
   ];
 
   return (

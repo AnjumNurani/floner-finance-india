@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import StarFLogo from './StarFLogo';
 import HelpModal from './HelpModal';
-import { Menu, X, HelpCircle } from 'lucide-react';
+import { Menu, X, HelpCircle, Home, TrendingUp, Target, Calculator, Plus } from 'lucide-react';
 
 const Navbar = () => {
   const { user, setUser } = useUser();
@@ -21,17 +22,48 @@ const Navbar = () => {
     setIsSidebarOpen(false);
   };
 
+  const navItems = [
+    { name: 'Home', href: '/', icon: Home },
+    { name: 'Cash Flow', href: '/cashflow', icon: TrendingUp },
+    { name: 'Budget', href: '/budget', icon: Target },
+    { name: 'Tax Calc', href: '/tax-calculator', icon: Calculator },
+    { name: 'Add Transaction', href: '/add-transaction', icon: Plus },
+  ];
+
   return (
     <>
       <nav className="bg-nude-50 shadow-sm fixed top-0 left-0 right-0 z-50 border-b border-nude-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            {/* Logo - Now clickable and redirects to dashboard */}
+            {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                 <StarFLogo size={36} />
                 <span className="text-xl font-bold text-jade-600">Enro</span>
               </Link>
+            </div>
+
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.href;
+                
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                      isActive 
+                        ? 'bg-jade-100 text-jade-700' 
+                        : 'text-jade-600 hover:bg-nude-100 hover:text-jade-700'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* User Menu */}

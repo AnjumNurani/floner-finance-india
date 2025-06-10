@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
@@ -15,37 +16,6 @@ const Dashboard = () => {
       acc[t.category] = (acc[t.category] || 0) + t.amount;
       return acc;
     }, {} as Record<string, number>);
-
-  const featureCards = [
-    {
-      title: 'Cash Flow',
-      description: 'Track your income and expenses',
-      icon: '💰',
-      href: '/cashflow',
-      color: 'from-jade-400 to-jade-600'
-    },
-    {
-      title: 'Budget',
-      description: 'Manage your monthly budget',
-      icon: '📊',
-      href: '/budget',
-      color: 'from-nude-400 to-nude-600'
-    },
-    {
-      title: 'Tax Calculator',
-      description: 'Calculate your tax liability',
-      icon: '🧮',
-      href: '/tax-calculator',
-      color: 'from-jade-500 to-jade-700'
-    },
-    {
-      title: 'Settings',
-      description: 'Customize your experience',
-      icon: '⚙️',
-      href: '/settings',
-      color: 'from-nude-500 to-nude-700'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-nude-50">
@@ -94,23 +64,6 @@ const Dashboard = () => {
               <p className="text-lg font-semibold text-rose-600">-₹{monthlyExpense.toLocaleString('en-IN')}</p>
             </div>
           </div>
-        </div>
-
-        {/* Feature Cards - Desktop Only */}
-        <div className="hidden lg:grid lg:grid-cols-4 gap-6 mb-8">
-          {featureCards.map((card) => (
-            <Link
-              key={card.title}
-              to={card.href}
-              className="group"
-            >
-              <div className={`bg-gradient-to-br ${card.color} rounded-xl p-6 text-nude-50 shadow-lg transform transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl`}>
-                <div className="text-3xl mb-3">{card.icon}</div>
-                <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
-                <p className="text-nude-100 text-sm">{card.description}</p>
-              </div>
-            </Link>
-          ))}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">

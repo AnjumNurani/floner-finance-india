@@ -7,6 +7,7 @@ import Dashboard from '../components/Dashboard';
 import CashFlow from '../components/CashFlow';
 import Budget from '../components/Budget';
 import TaxCalculator from '../components/TaxCalculator';
+import AddTransaction from '../components/AddTransaction';
 import Settings from '../components/Settings';
 import Profile from '../components/Profile';
 import Subscription from '../components/Subscription';
@@ -36,6 +37,7 @@ const Index = () => {
           <Route path="/cashflow" element={<CashFlow />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/tax-calculator" element={<TaxCalculator />} />
+          <Route path="/add-transaction" element={<AddTransaction />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
