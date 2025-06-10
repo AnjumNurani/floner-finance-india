@@ -13,12 +13,12 @@ const AddTransaction = () => {
     e.preventDefault();
     if (amount && description && category) {
       addTransaction({
-        id: Date.now().toString(),
         type,
         amount: parseFloat(amount),
         description,
         category,
-        date: new Date().toLocaleDateString('en-GB')
+        date: new Date().toLocaleDateString('en-GB'),
+        account: 'SBI Main'
       });
       
       // Reset form
