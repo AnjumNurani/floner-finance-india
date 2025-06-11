@@ -1,6 +1,10 @@
 
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import { Button } from './ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from './ui/alert-dialog';
+import { Camera, Eye, Shield, Clock } from 'lucide-react';
 
 const Profile = () => {
   const { user, setUser } = useUser();
@@ -10,6 +14,12 @@ const Profile = () => {
     email: user?.email || '',
     phone: user?.phone || ''
   });
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [is2FAEnabled, setIs2FAEnabled] = useState(false);
 
   const handleSave = () => {
     const updatedUser = { ...user!, ...formData };
@@ -27,6 +37,45 @@ const Profile = () => {
     setIsEditing(false);
   };
 
+  const handlePhotoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const updatedUser = { ...user!, profilePicture: e.target?.result as string };
+        setUser(updatedUser);
+        localStorage.setItem('enro-user', JSON.stringify(updatedUser));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handlePasswordChange = () => {
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      alert('New passwords do not match');
+      return;
+    }
+    if (passwordForm.newPassword.length < 6) {
+      alert('Password must be at least 6 characters long');
+      return;
+    }
+    // Simulate password change
+    alert('Password changed successfully!');
+    setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
+  };
+
+  const handleEnable2FA = () => {
+    setIs2FAEnabled(!is2FAEnabled);
+    alert(is2FAEnabled ? 'Two-Factor Authentication disabled' : 'Two-Factor Authentication enabled');
+  };
+
+  const mockLoginHistory = [
+    { date: '2024-06-11 09:30 AM', device: 'Chrome on Windows', location: 'Mumbai, India' },
+    { date: '2024-06-10 02:15 PM', device: 'Mobile App', location: 'Mumbai, India' },
+    { date: '2024-06-09 11:45 AM', device: 'Safari on Mac', location: 'Mumbai, India' },
+    { date: '2024-06-08 06:20 PM', device: 'Chrome on Android', location: 'Mumbai, India' }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
@@ -38,8 +87,14 @@ const Profile = () => {
         {/* Profile Picture & Basic Info */}
         <div className="lg:col-span-1">
           <div className="bg-card rounded-xl shadow-lg p-6 text-center border">
-            <div className="w-24 h-24 bg-gradient-to-br from-jade-500 to-jade-600 rounded-full flex items-center justify-center text-primary-foreground text-3xl font-bold mx-auto mb-4">
-              {user?.name.charAt(0).toUpperCase()}
+            <div className="relative w-24 h-24 mx-auto mb-4">
+              {user?.profilePicture ? (
+                <img src={user.profilePicture} alt="Profile" className="w-24 h-24 rounded-full object-cover" />
+              ) : (
+                <div className="w-24 h-24 bg-gradient-to-br from-jade-500 to-jade-600 rounded-full flex items-center justify-center text-primary-foreground text-3xl font-bold">
+                  {user?.name.charAt(0).toUpperCase()}
+                </div>
+              )}
             </div>
             <h2 className="text-xl font-semibold text-card-foreground">{user?.name}</h2>
             <p className="text-muted-foreground">{user?.email}</p>
@@ -52,9 +107,38 @@ const Profile = () => {
               {user?.subscriptionPlan?.toUpperCase()} MEMBER
             </div>
 
-            <button className="mt-4 w-full bg-primary text-primary-foreground py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors duration-200">
-              Change Photo
-            </button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="mt-4 w-full" variant="default">
+                  <Camera className="w-4 h-4 mr-2" />
+                  Change Photo
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Change Profile Photo</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="w-24 h-24">
+                      {user?.profilePicture ? (
+                        <img src={user.profilePicture} alt="Profile" className="w-24 h-24 rounded-full object-cover" />
+                      ) : (
+                        <div className="w-24 h-24 bg-gradient-to-br from-jade-500 to-jade-600 rounded-full flex items-center justify-center text-primary-foreground text-3xl font-bold">
+                          {user?.name.charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handlePhotoUpload}
+                      className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                    />
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Quick Stats */}
@@ -226,19 +310,87 @@ const Profile = () => {
                   <p className="font-medium text-card-foreground">Password</p>
                   <p className="text-sm text-muted-foreground">Last changed 2 months ago</p>
                 </div>
-                <button className="text-primary hover:text-primary/80 font-medium">
-                  Change Password
-                </button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      <Eye className="w-4 h-4 mr-2" />
+                      Change Password
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Change Password</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Current Password</label>
+                        <input
+                          type="password"
+                          value={passwordForm.currentPassword}
+                          onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })}
+                          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">New Password</label>
+                        <input
+                          type="password"
+                          value={passwordForm.newPassword}
+                          onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })}
+                          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Confirm New Password</label>
+                        <input
+                          type="password"
+                          value={passwordForm.confirmPassword}
+                          onChange={(e) => setPasswordForm({ ...passwordForm, confirmPassword: e.target.value })}
+                          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <Button onClick={handlePasswordChange} className="w-full">
+                        Update Password
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
 
               <div className="flex items-center justify-between p-4 border rounded-lg">
                 <div>
                   <p className="font-medium text-card-foreground">Two-Factor Authentication</p>
-                  <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
+                  <p className="text-sm text-muted-foreground">
+                    {is2FAEnabled ? 'Currently enabled' : 'Add an extra layer of security'}
+                  </p>
                 </div>
-                <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200">
-                  Enable
-                </button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant={is2FAEnabled ? "destructive" : "default"}>
+                      <Shield className="w-4 h-4 mr-2" />
+                      {is2FAEnabled ? 'Disable' : 'Enable'}
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        {is2FAEnabled ? 'Disable' : 'Enable'} Two-Factor Authentication
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        {is2FAEnabled 
+                          ? 'Are you sure you want to disable two-factor authentication? This will make your account less secure.'
+                          : 'Two-factor authentication adds an extra layer of security to your account. You will need to enter a code from your authenticator app each time you log in.'
+                        }
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={handleEnable2FA}>
+                        {is2FAEnabled ? 'Disable' : 'Enable'} 2FA
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
 
               <div className="flex items-center justify-between p-4 border rounded-lg">
@@ -246,9 +398,32 @@ const Profile = () => {
                   <p className="font-medium text-card-foreground">Login History</p>
                   <p className="text-sm text-muted-foreground">View recent login activity</p>
                 </div>
-                <button className="text-primary hover:text-primary/80 font-medium">
-                  View History
-                </button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      <Clock className="w-4 h-4 mr-2" />
+                      View History
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl">
+                    <DialogHeader>
+                      <DialogTitle>Login History</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-3 max-h-96 overflow-y-auto">
+                      {mockLoginHistory.map((login, index) => (
+                        <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
+                          <div>
+                            <p className="font-medium text-sm">{login.device}</p>
+                            <p className="text-xs text-muted-foreground">{login.location}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm font-medium">{login.date}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
