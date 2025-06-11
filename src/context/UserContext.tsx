@@ -92,13 +92,13 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     // Check if user has seen onboarding
-    const hasSeenOnboarding = localStorage.getItem('floner-onboarded');
+    const hasSeenOnboarding = localStorage.getItem('enro-onboarded');
     if (hasSeenOnboarding) {
       setIsOnboarded(true);
     }
 
     // Check if user is logged in
-    const savedUser = localStorage.getItem('floner-user');
+    const savedUser = localStorage.getItem('enro-user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
