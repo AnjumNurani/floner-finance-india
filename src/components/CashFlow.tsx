@@ -160,7 +160,7 @@ const CashFlow = () => {
                   <option value="amount">Amount</option>
                   <option value="description">Description</option>
                 </select>
-                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50">
+                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 hidden md:inline-flex">
                   <Link to="/add-transaction">
                     <PlusCircle className="h-4 w-4" />
                     <span>Add Transaction</span>

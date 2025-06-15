@@ -2,8 +2,11 @@
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const AddTransaction = () => {
+  const navigate = useNavigate();
   const { addTransaction } = useUser();
   const { toast } = useToast();
   const [type, setType] = useState<'income' | 'expense'>('expense');
@@ -33,15 +36,25 @@ const AddTransaction = () => {
       setAmount('');
       setDescription('');
       setCategory('');
+      navigate(-1); // Go back after successful submission
     }
   };
 
   return (
     <div className="min-h-screen bg-nude-50">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-jade-700">Add Transaction</h1>
-          <p className="text-jade-600 mt-1">Record a new income or expense</p>
+        <div className="mb-8 flex items-center gap-4">
+          <button
+            onClick={() => navigate(-1)}
+            className="p-2 rounded-full hover:bg-nude-100 transition-colors"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="h-6 w-6 text-jade-700" />
+          </button>
+          <div>
+            <h1 className="text-3xl font-bold text-jade-700">Add Transaction</h1>
+            <p className="text-jade-600 mt-1">Record a new income or expense</p>
+          </div>
         </div>
 
         <div className="bg-nude-50 rounded-xl shadow-md p-6 border border-nude-200">
