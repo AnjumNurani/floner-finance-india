@@ -262,21 +262,6 @@ const CashFlow = () => {
               })}
             </div>
           </div>
-
-          {/* Export Options (Premium) */}
-          {user?.subscriptionPlan === 'ultra' && (
-            <div className="bg-nude-50 rounded-xl shadow-lg p-6 border border-nude-200">
-              <h3 className="text-lg font-semibold text-jade-800 mb-4">Export Reports</h3>
-              <div className="space-y-3">
-                <button className="w-full bg-jade-500 text-nude-50 py-2 px-4 rounded-lg hover:bg-jade-600 transition-colors duration-200">
-                  📄 Export as PDF
-                </button>
-                <button className="w-full bg-nude-500 text-nude-50 py-2 px-4 rounded-lg hover:bg-nude-600 transition-colors duration-200">
-                  📊 Export as Excel
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

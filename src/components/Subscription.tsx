@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -70,7 +69,6 @@ const Subscription = () => {
         'Ad-free experience',
         'Advanced tax calculator',
         'Tax saving suggestions',
-        'Export reports (PDF, Excel)',
         'Priority support',
         'Web & mobile app access'
       ],
@@ -232,7 +230,6 @@ const Subscription = () => {
                 ['Transaction History', '7 days', '30 days', '90 days'],
                 ['Budget & Goals', '✗', 'Basic', 'Advanced'],
                 ['Tax Calculator', '✗', '✓', '✓ + Suggestions'],
-                ['Export Reports', '✗', '✗', '✓'],
                 ['Ads', '✓', '✗', '✗'],
                 ['Support', 'Community', 'Email', 'Priority'],
               ].map((row, index) => (
