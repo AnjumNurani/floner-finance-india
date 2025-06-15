@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
 const Subscription = () => {
   const { user, setUser, applyPromo } = useUser();
   const [selectedPlan, setSelectedPlan] = useState(user?.subscriptionPlan || 'free');
   const [coupon, setCoupon] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [successPlan, setSuccessPlan] = useState<null | 'pro' | 'ultra'>(null);
   const navigate = useNavigate();
 
   const plans = [
@@ -87,8 +84,7 @@ const Subscription = () => {
 
     if (coupon.toUpperCase() === 'ZEN20' && (planId === 'pro' || planId === 'ultra')) {
       applyPromo(planId);
-      setSuccessPlan(planId);
-      setShowSuccess(true);
+      // Show no popup now, just banner always at the top
       return;
     }
     
@@ -105,28 +101,12 @@ const Subscription = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Success Modal after promo */}
-      <Dialog open={showSuccess} onOpenChange={(open) => setShowSuccess(open)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              {successPlan ? `${successPlan.charAt(0).toUpperCase() + successPlan.slice(1)} Plan Activated!` : "Success"}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="py-3 text-center">
-            <p className="text-jade-700 text-lg mb-2">Congratulations! 🎉</p>
-            <p className="mb-2">
-              You now have <b>3 months of {successPlan?.toUpperCase()} for Free</b>.<br />
-              Enjoy all premium features unlocked!
-            </p>
-          </div>
-          <DialogFooter>
-            <Button onClick={() => navigate('/dashboard')} className="w-full bg-jade-600 hover:bg-jade-700 text-nude-50">
-              Go to Dashboard
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Info Banner about free subscription */}
+      <div className="mb-8">
+        <div className="bg-gradient-to-r from-jade-500 to-jade-400 text-white rounded-xl shadow-md px-6 py-4 flex items-center justify-center text-lg font-semibold border border-jade-600">
+          🎁 You got 3 months of subscription free as a lucky user!
+        </div>
+      </div>
 
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Plan</h1>
