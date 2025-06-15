@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface User {
@@ -40,35 +39,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [balance, setBalance] = useState(50000);
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    {
-      id: '1',
-      amount: 5000,
-      description: 'Salary Credit',
-      category: 'Salary',
-      type: 'income',
-      date: '2024-06-01',
-      account: 'SBI Main'
-    },
-    {
-      id: '2',
-      amount: 1200,
-      description: 'Grocery Shopping',
-      category: 'Food',
-      type: 'expense',
-      date: '2024-06-02',
-      account: 'SBI Main'
-    },
-    {
-      id: '3',
-      amount: 800,
-      description: 'Electricity Bill',
-      category: 'Utilities',
-      type: 'expense',
-      date: '2024-06-02',
-      account: 'SBI Main'
-    }
-  ]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   const monthlyIncome = transactions
     .filter(t => t.type === 'income')
