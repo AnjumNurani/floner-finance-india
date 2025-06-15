@@ -57,7 +57,7 @@ const AddBudgetModal: React.FC<AddBudgetModalProps> = ({ isOpen, onClose, onAdd 
               onChange={(e) => setBudgeted(e.target.value)}
               placeholder="5000"
               min="0"
-              step="100"
+              step="0.01"
               required
             />
           </div>
@@ -103,3 +103,4 @@ const AddBudgetModal: React.FC<AddBudgetModalProps> = ({ isOpen, onClose, onAdd 
 };
 
 export default AddBudgetModal;
+

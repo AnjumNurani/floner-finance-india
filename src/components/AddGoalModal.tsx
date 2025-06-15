@@ -59,7 +59,7 @@ const AddGoalModal: React.FC<AddGoalModalProps> = ({ isOpen, onClose, onAdd }) =
               onChange={(e) => setTarget(e.target.value)}
               placeholder="50000"
               min="0"
-              step="1000"
+              step="0.01"
               required
             />
           </div>
@@ -115,3 +115,4 @@ const AddGoalModal: React.FC<AddGoalModalProps> = ({ isOpen, onClose, onAdd }) =
 };
 
 export default AddGoalModal;
+
