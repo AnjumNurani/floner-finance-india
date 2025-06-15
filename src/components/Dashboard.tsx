@@ -6,11 +6,8 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
 const Dashboard = () => {
-  const { user, balance, transactions, monthlyIncome, monthlyExpense } = useUser();
+  const { user, transactions } = useUser();
   const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
-
-  const savingsRate = monthlyIncome > 0 ? ((monthlyIncome - monthlyExpense) / monthlyIncome) * 100 : 0;
-  const financialHealthScore = Math.min(100, Math.max(0, 50 + savingsRate));
 
   const expenseCategories = transactions
     .filter(t => t.type === 'expense')
@@ -73,28 +70,6 @@ const Dashboard = () => {
           <p className="text-jade-600 mt-1">Here's your financial overview for today</p>
         </div>
 
-        {/* Account Balance Card */}
-        <div className="bg-nude-100 rounded-2xl p-6 text-jade-700 mb-8 shadow-lg border border-nude-200">
-          <div className="flex justify-between items-start mb-4">
-            <div>
-              <p className="text-jade-600 text-sm">Current Balance</p>
-              <h2 className="text-3xl font-bold">₹{balance.toLocaleString('en-IN')}</h2>
-            </div>
-          </div>
-
-          {/* Mini Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-nude-50 rounded-lg p-3 border border-nude-200">
-              <p className="text-jade-600 text-xs">This Month Income</p>
-              <p className="text-lg font-semibold text-jade-700">+₹{monthlyIncome.toLocaleString('en-IN')}</p>
-            </div>
-            <div className="bg-nude-50 rounded-lg p-3 border border-nude-200">
-              <p className="text-jade-600 text-xs">This Month Expenses</p>
-              <p className="text-lg font-semibold text-rose-600">-₹{monthlyExpense.toLocaleString('en-IN')}</p>
-            </div>
-          </div>
-        </div>
-
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Recent Transactions */}
           <div className="lg:col-span-2">
@@ -133,40 +108,6 @@ const Dashboard = () => {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Financial Health Score */}
-            <div className="bg-nude-50 rounded-xl shadow-md p-6 border border-nude-200">
-              <h3 className="text-lg font-semibold text-jade-700 mb-4">Financial Health</h3>
-              <div className="relative w-24 h-24 mx-auto mb-4">
-                <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
-                  <path
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="#E6D9C7"
-                    strokeWidth="3"
-                  />
-                  <path
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                    fill="none"
-                    stroke="#2C775C"
-                    strokeWidth="3"
-                    strokeDasharray={`${financialHealthScore}, 100`}
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-lg font-bold text-jade-700">{Math.round(financialHealthScore)}</span>
-                </div>
-              </div>
-              <p className="text-center text-sm text-jade-600">
-                {financialHealthScore >= 80 ? 'Excellent! 🎉' : 
-                 financialHealthScore >= 60 ? 'Good 👍' : 
-                 financialHealthScore >= 40 ? 'Fair 😐' : 'Needs Improvement 📈'}
-              </p>
-            </div>
-
             {/* Expense Breakdown */}
             <div className="bg-nude-50 rounded-xl shadow-md p-6 border border-nude-200">
               <h3 className="text-lg font-semibold text-jade-700 mb-4">Top Expenses</h3>

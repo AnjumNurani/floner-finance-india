@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
@@ -152,7 +153,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Sidebar - Only Profile and Settings, no duplicate navigation */}
       {isSidebarOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
           {/* Backdrop */}
@@ -164,28 +165,6 @@ const Navbar = () => {
           {/* Sidebar */}
           <div className="fixed top-16 left-0 w-64 h-full bg-nude-50 shadow-lg border-r border-nude-200 transform transition-transform duration-300">
             <div className="p-4">
-              <div className="space-y-2 mb-4 pb-4 border-b border-nude-200">
-                {navItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
-                  return (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      onClick={() => setIsSidebarOpen(false)}
-                      className={`flex items-center space-x-3 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? 'bg-jade-100 text-jade-700'
-                          : 'text-jade-600 hover:bg-nude-100'
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
-                      <span>{item.name}</span>
-                    </Link>
-                  );
-                })}
-              </div>
-
               {/* User Section */}
               <div className="mb-8">
                 <div className="flex items-center space-x-3 px-4 py-3">
