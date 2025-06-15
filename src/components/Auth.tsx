@@ -33,7 +33,7 @@ const Auth = () => {
     };
 
     // Save to localStorage and context
-    localStorage.setItem('enro-user', JSON.stringify(user));
+    localStorage.setItem('fenqro-user', JSON.stringify(user));
     setUser(user);
   };
 
@@ -164,7 +164,7 @@ const Auth = () => {
                   subscriptionPlan: 'free' as const,
                   connectedAccounts: 1
                 };
-                localStorage.setItem('enro-user', JSON.stringify(demoUser));
+                localStorage.setItem('fenqro-user', JSON.stringify(demoUser));
                 setUser(demoUser);
               }}
               className="w-full bg-nude-100 text-nude-700 py-2 px-4 rounded-lg font-medium hover:bg-nude-200 transition-all duration-200"

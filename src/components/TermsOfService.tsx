@@ -15,7 +15,7 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
               <div className="text-gray-700 space-y-3">
                 <p>
-                  By accessing and using Enro ("the Service"), you accept and agree to be bound by 
+                  By accessing and using Fenqro ("the Service"), you accept and agree to be bound by 
                   the terms and provision of this agreement. If you do not agree to these terms, 
                   you should not use this service.
                 </p>
@@ -26,7 +26,7 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">2. Description of Service</h2>
               <div className="text-gray-700 space-y-3">
                 <p>
-                  Enro is a financial management application that helps users track expenses, 
+                  Fenqro is a financial management application that helps users track expenses, 
                   manage budgets, set financial goals, and calculate income tax obligations 
                   according to Indian taxation laws.
                 </p>
@@ -84,7 +84,7 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">5. Bank Account Integration</h2>
               <div className="text-gray-700 space-y-3">
                 <p>
-                  When connecting your bank accounts to Enro:
+                  When connecting your bank accounts to Fenqro:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>We use read-only access through secure APIs</li>
@@ -145,7 +145,7 @@ const TermsOfService = () => {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">9. Limitation of Liability</h2>
               <div className="text-gray-700 space-y-3">
                 <p>
-                  To the maximum extent permitted by law, Enro shall not be liable for any 
+                  To the maximum extent permitted by law, Fenqro shall not be liable for any 
                   indirect, incidental, special, or consequential damages arising from your use 
                   of the service.
                 </p>
@@ -189,9 +189,9 @@ const TermsOfService = () => {
                   For questions about these Terms of Service, please contact us:
                 </p>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><strong>Email:</strong> legal@enro.com</p>
+                  <p><strong>Email:</strong> legal@fenqro.com</p>
                   <p><strong>Phone:</strong> +91 98765 43210</p>
-                  <p><strong>Address:</strong> Enro Technologies Pvt. Ltd.<br />
+                  <p><strong>Address:</strong> Fenqro Technologies Pvt. Ltd.<br />
                   123 Finance Street, Mumbai, Maharashtra 400001, India</p>
                 </div>
               </div>

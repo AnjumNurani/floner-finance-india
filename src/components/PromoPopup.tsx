@@ -11,7 +11,7 @@ const PromoPopup = () => {
 
   useEffect(() => {
     if (user) {
-      const hasSeenPromo = localStorage.getItem('promoPopupSeen_ZEN20');
+      const hasSeenPromo = localStorage.getItem('promoPopupSeen_FENQRO20');
       const promoEndDate = new Date('2025-09-20');
 
       if (!hasSeenPromo && new Date() < promoEndDate) {
@@ -21,7 +21,7 @@ const PromoPopup = () => {
   }, [user]);
 
   const handleClose = () => {
-    localStorage.setItem('promoPopupSeen_ZEN20', 'true');
+    localStorage.setItem('promoPopupSeen_FENQRO20', 'true');
     setIsOpen(false);
   };
 
@@ -42,7 +42,7 @@ const PromoPopup = () => {
         <div className="py-4 text-center">
             <p className="text-sm text-gray-500 mb-2">Use this coupon code on the subscription page:</p>
             <div className="inline-block bg-jade-100 text-jade-800 font-mono text-lg py-2 px-4 rounded-md border border-dashed border-jade-300">
-                ZEN20
+                FENQRO20
             </div>
         </div>
         <DialogFooter>
