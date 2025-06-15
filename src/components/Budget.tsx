@@ -26,19 +26,9 @@ const Budget = () => {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddGoalModal, setShowAddGoalModal] = useState(false);
 
-  const [budgets, setBudgets] = useState<BudgetItem[]>([
-    { id: '1', category: 'Food & Dining', budgeted: 8000, spent: 5200, icon: '🍽️' },
-    { id: '2', category: 'Transportation', budgeted: 3000, spent: 2100, icon: '🚗' },
-    { id: '3', category: 'Entertainment', budgeted: 2000, spent: 800, icon: '🎬' },
-    { id: '4', category: 'Shopping', budgeted: 5000, spent: 3200, icon: '🛒' },
-    { id: '5', category: 'Utilities', budgeted: 2500, spent: 2200, icon: '💡' },
-  ]);
+  const [budgets, setBudgets] = useState<BudgetItem[]>([]);
 
-  const [goals, setGoals] = useState<Goal[]>([
-    { id: '1', title: 'Emergency Fund', target: 100000, current: 35000, deadline: '2024-12-31', icon: '🏦' },
-    { id: '2', title: 'Vacation to Goa', target: 25000, current: 12000, deadline: '2024-08-15', icon: '🏖️' },
-    { id: '3', title: 'New Laptop', target: 80000, current: 45000, deadline: '2024-09-30', icon: '💻' },
-  ]);
+  const [goals, setGoals] = useState<Goal[]>([]);
 
   const handleAddBudget = (newBudget: { category: string; budgeted: number; icon: string }) => {
     const budget: BudgetItem = {
