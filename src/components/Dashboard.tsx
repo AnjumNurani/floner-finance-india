@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
@@ -34,29 +35,29 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-nude-50 via-nude-50 to-jade-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100">
       {/* Full-screen subscription popup */}
       <Dialog open={showSubscriptionPopup} onOpenChange={handleClosePopup}>
         <DialogContent className="max-w-2xl w-full h-screen max-h-screen sm:h-auto sm:max-h-[90vh] flex flex-col justify-center">
           <div className="text-center py-8">
             <div className="text-6xl mb-6">🎉</div>
-            <h2 className="text-3xl font-bold text-jade-700 mb-4">
+            <h2 className="text-3xl font-bold text-blue-700 mb-4">
               Congratulations!
             </h2>
-            <p className="text-xl text-jade-600 mb-6">
-              You got <span className="font-bold text-jade-700">3 months of subscription free</span> as a lucky user!
+            <p className="text-xl text-blue-600 mb-6">
+              You got <span className="font-bold text-blue-700">3 months of subscription free</span> as a lucky user!
             </p>
-            <div className="bg-jade-100 rounded-lg p-6 mb-6 border border-jade-200">
-              <p className="text-jade-700 text-lg font-semibold">
+            <div className="bg-blue-100 rounded-lg p-6 mb-6 border border-blue-200">
+              <p className="text-blue-700 text-lg font-semibold">
                 🚀 Your {user?.subscriptionPlan?.toUpperCase()} plan is now active!
               </p>
-              <p className="text-jade-600 mt-2">
+              <p className="text-blue-600 mt-2">
                 Enjoy all premium features unlocked until September 2025
               </p>
             </div>
             <Button 
               onClick={handleClosePopup}
-              className="bg-jade-600 hover:bg-jade-700 text-white px-8 py-3 text-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
             >
               Start Exploring Premium Features
             </Button>
@@ -67,13 +68,13 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Enhanced Welcome Header */}
         <div className="mb-8 text-center lg:text-left">
-          <div className="bg-gradient-to-r from-jade-600 to-jade-700 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
             <h1 className="text-4xl lg:text-5xl font-bold mb-2">
               Welcome back, {user?.name}! 👋
             </h1>
           </div>
-          <p className="text-jade-600 text-lg">Take control of your finances today</p>
-          <div className="flex items-center justify-center lg:justify-start mt-3 text-sm text-jade-500">
+          <p className="text-blue-600 text-lg">Take control of your finances today</p>
+          <div className="flex items-center justify-center lg:justify-start mt-3 text-sm text-blue-500">
             <Calendar className="w-4 h-4 mr-2" />
             <span>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
           </div>
@@ -82,34 +83,34 @@ const Dashboard = () => {
         {/* Quick Actions Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <Link to="/add-transaction" className="group">
-            <div className="bg-gradient-to-br from-jade-500 to-jade-600 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
               <Plus className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-lg">Add Transaction</h3>
-              <p className="text-jade-100 text-sm">Track your money</p>
+              <p className="text-blue-100 text-sm">Track your money</p>
             </div>
           </Link>
           
           <Link to="/budget" className="group">
-            <div className="bg-gradient-to-br from-rose-400 to-rose-500 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
+            <div className="bg-gradient-to-br from-blue-400 to-blue-500 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
               <Target className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-lg">Budget</h3>
-              <p className="text-rose-100 text-sm">Plan your spending</p>
+              <p className="text-blue-100 text-sm">Plan your spending</p>
             </div>
           </Link>
           
           <Link to="/tax-calculator" className="group">
-            <div className="bg-gradient-to-br from-amber-400 to-amber-500 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
               <Calculator className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-lg">Tax Calculator</h3>
-              <p className="text-amber-100 text-sm">Calculate taxes</p>
+              <p className="text-blue-100 text-sm">Calculate taxes</p>
             </div>
           </Link>
           
           <Link to="/cashflow" className="group">
-            <div className="bg-gradient-to-br from-purple-400 to-purple-500 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
+            <div className="bg-gradient-to-br from-blue-300 to-blue-400 p-6 rounded-xl text-white transform transition-all duration-200 hover:scale-105 hover:shadow-lg">
               <TrendingUp className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-lg">Cash Flow</h3>
-              <p className="text-purple-100 text-sm">View transactions</p>
+              <p className="text-blue-100 text-sm">View transactions</p>
             </div>
           </Link>
         </div>
@@ -117,27 +118,27 @@ const Dashboard = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Enhanced Recent Transactions */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-nude-100 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100 backdrop-blur-sm">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-jade-400 to-jade-500 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
                     <TrendingUp className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-jade-700">Recent Transactions</h3>
+                  <h3 className="text-xl font-bold text-blue-700">Recent Transactions</h3>
                 </div>
-                <Link to="/cashflow" className="text-jade-500 text-sm hover:underline font-medium">
+                <Link to="/cashflow" className="text-blue-500 text-sm hover:underline font-medium">
                   View All →
                 </Link>
               </div>
               
               <div className="space-y-4">
                 {transactions.slice(0, 5).map((transaction, index) => (
-                  <div key={transaction.id} className="flex items-center justify-between p-4 hover:bg-jade-50 rounded-xl transition-all duration-200 border border-transparent hover:border-jade-100">
+                  <div key={transaction.id} className="flex items-center justify-between p-4 hover:bg-blue-50 rounded-xl transition-all duration-200 border border-transparent hover:border-blue-100">
                     <div className="flex items-center space-x-4">
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                         transaction.type === 'income' 
-                          ? 'bg-gradient-to-br from-emerald-400 to-emerald-500' 
-                          : 'bg-gradient-to-br from-rose-400 to-rose-500'
+                          ? 'bg-gradient-to-br from-blue-400 to-blue-500' 
+                          : 'bg-gradient-to-br from-blue-600 to-blue-700'
                       }`}>
                         {transaction.type === 'income' ? 
                           <TrendingUp className="w-5 h-5 text-white" /> : 
@@ -145,13 +146,13 @@ const Dashboard = () => {
                         }
                       </div>
                       <div>
-                        <p className="font-semibold text-jade-700">{transaction.description}</p>
-                        <p className="text-sm text-jade-500">{transaction.category} • {transaction.date}</p>
+                        <p className="font-semibold text-blue-700">{transaction.description}</p>
+                        <p className="text-sm text-blue-500">{transaction.category} • {transaction.date}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className={`font-bold text-lg ${
-                        transaction.type === 'income' ? 'text-emerald-600' : 'text-rose-600'
+                        transaction.type === 'income' ? 'text-blue-600' : 'text-blue-700'
                       }`}>
                         {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString('en-IN')}
                       </p>
@@ -161,12 +162,12 @@ const Dashboard = () => {
                 
                 {transactions.length === 0 && (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-jade-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Plus className="w-8 h-8 text-jade-600" />
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Plus className="w-8 h-8 text-blue-600" />
                     </div>
-                    <h4 className="text-lg font-semibold text-jade-700 mb-2">No transactions yet</h4>
-                    <p className="text-jade-500 mb-4">Start by adding your first transaction</p>
-                    <Link to="/add-transaction" className="inline-flex items-center px-4 py-2 bg-jade-600 text-white rounded-lg hover:bg-jade-700 transition-colors">
+                    <h4 className="text-lg font-semibold text-blue-700 mb-2">No transactions yet</h4>
+                    <p className="text-blue-500 mb-4">Start by adding your first transaction</p>
+                    <Link to="/add-transaction" className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                       <Plus className="w-4 h-4 mr-2" />
                       Add Transaction
                     </Link>
@@ -179,12 +180,12 @@ const Dashboard = () => {
           {/* Enhanced Sidebar */}
           <div className="space-y-6">
             {/* Top Expenses with better styling */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-nude-100 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100 backdrop-blur-sm">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-rose-400 to-rose-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
                   <TrendingDown className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-jade-700">Top Expenses</h3>
+                <h3 className="text-xl font-bold text-blue-700">Top Expenses</h3>
               </div>
               
               <div className="space-y-4">
@@ -192,25 +193,25 @@ const Dashboard = () => {
                   .sort(([,a], [,b]) => b - a)
                   .slice(0, 3)
                   .map(([category, amount], index) => (
-                    <div key={category} className="flex justify-between items-center p-3 bg-rose-50 rounded-lg">
+                    <div key={category} className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white ${
-                          index === 0 ? 'bg-rose-500' : index === 1 ? 'bg-rose-400' : 'bg-rose-300'
+                          index === 0 ? 'bg-blue-600' : index === 1 ? 'bg-blue-500' : 'bg-blue-400'
                         }`}>
                           {index + 1}
                         </div>
-                        <span className="font-medium text-jade-700">{category}</span>
+                        <span className="font-medium text-blue-700">{category}</span>
                       </div>
-                      <span className="font-bold text-rose-600">₹{amount.toLocaleString('en-IN')}</span>
+                      <span className="font-bold text-blue-600">₹{amount.toLocaleString('en-IN')}</span>
                     </div>
                   ))}
                 
                 {Object.keys(expenseCategories).length === 0 && (
                   <div className="text-center py-8">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <TrendingDown className="w-6 h-6 text-rose-600" />
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <TrendingDown className="w-6 h-6 text-blue-600" />
                     </div>
-                    <p className="text-jade-500 text-sm">No expenses recorded yet</p>
+                    <p className="text-blue-500 text-sm">No expenses recorded yet</p>
                   </div>
                 )}
               </div>
@@ -218,19 +219,19 @@ const Dashboard = () => {
 
             {/* Enhanced Subscription Upgrade */}
             {user?.subscriptionPlan === 'free' && (
-              <div className="bg-gradient-to-br from-jade-100 to-jade-200 rounded-2xl p-6 border border-jade-200 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-jade-300 rounded-full -translate-y-16 translate-x-16 opacity-20"></div>
+              <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-6 border border-blue-200 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-300 rounded-full -translate-y-16 translate-x-16 opacity-20"></div>
                 <div className="relative">
                   <div className="flex items-center space-x-2 mb-3">
-                    <Star className="w-6 h-6 text-jade-600" />
-                    <h3 className="font-bold text-jade-700 text-lg">Upgrade to Pro!</h3>
+                    <Star className="w-6 h-6 text-blue-600" />
+                    <h3 className="font-bold text-blue-700 text-lg">Upgrade to Pro!</h3>
                   </div>
-                  <p className="text-jade-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-blue-600 mb-4 text-sm leading-relaxed">
                     Unlock advanced features like detailed insights, extended transaction history, and more premium tools!
                   </p>
                   <Link
                     to="/subscription"
-                    className="inline-flex items-center bg-jade-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-jade-700 transition-all duration-200 transform hover:scale-105 shadow-md"
+                    className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-md"
                   >
                     <Star className="w-4 h-4 mr-2" />
                     View Plans
@@ -241,12 +242,12 @@ const Dashboard = () => {
 
             {/* Premium badge for non-free users */}
             {user?.subscriptionPlan !== 'free' && (
-              <div className="bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl p-6 border border-amber-200">
+              <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-6 border border-blue-200">
                 <div className="flex items-center space-x-2 mb-2">
-                  <Star className="w-6 h-6 text-amber-600" />
-                  <h3 className="font-bold text-amber-700 text-lg">Premium Member</h3>
+                  <Star className="w-6 h-6 text-blue-600" />
+                  <h3 className="font-bold text-blue-700 text-lg">Premium Member</h3>
                 </div>
-                <p className="text-amber-600 text-sm">
+                <p className="text-blue-600 text-sm">
                   You're enjoying all {user.subscriptionPlan.toUpperCase()} features! 🎉
                 </p>
               </div>
