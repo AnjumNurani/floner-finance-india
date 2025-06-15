@@ -1,10 +1,13 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 const Dashboard = () => {
   const { user, balance, transactions, monthlyIncome, monthlyExpense } = useUser();
+  const [showSubscriptionPopup, setShowSubscriptionPopup] = useState(false);
 
   const savingsRate = monthlyIncome > 0 ? ((monthlyIncome - monthlyExpense) / monthlyIncome) * 100 : 0;
   const financialHealthScore = Math.min(100, Math.max(0, 50 + savingsRate));
@@ -16,8 +19,51 @@ const Dashboard = () => {
       return acc;
     }, {} as Record<string, number>);
 
+  useEffect(() => {
+    if (user && user.subscriptionPlan !== 'free') {
+      const hasSeenPremiumNotification = localStorage.getItem('premiumNotificationSeen');
+      if (!hasSeenPremiumNotification) {
+        setShowSubscriptionPopup(true);
+      }
+    }
+  }, [user]);
+
+  const handleClosePopup = () => {
+    localStorage.setItem('premiumNotificationSeen', 'true');
+    setShowSubscriptionPopup(false);
+  };
+
   return (
     <div className="min-h-screen bg-nude-50">
+      {/* Full-screen subscription popup */}
+      <Dialog open={showSubscriptionPopup} onOpenChange={handleClosePopup}>
+        <DialogContent className="max-w-2xl w-full h-screen max-h-screen sm:h-auto sm:max-h-[90vh] flex flex-col justify-center">
+          <div className="text-center py-8">
+            <div className="text-6xl mb-6">🎉</div>
+            <h2 className="text-3xl font-bold text-jade-700 mb-4">
+              Congratulations!
+            </h2>
+            <p className="text-xl text-jade-600 mb-6">
+              You got <span className="font-bold text-jade-700">3 months of subscription free</span> as a lucky user!
+            </p>
+            <div className="bg-jade-100 rounded-lg p-6 mb-6 border border-jade-200">
+              <p className="text-jade-700 text-lg font-semibold">
+                🚀 Your {user?.subscriptionPlan?.toUpperCase()} plan is now active!
+              </p>
+              <p className="text-jade-600 mt-2">
+                Enjoy all premium features unlocked until September 2025
+              </p>
+            </div>
+            <Button 
+              onClick={handleClosePopup}
+              className="bg-jade-600 hover:bg-jade-700 text-white px-8 py-3 text-lg"
+            >
+              Start Exploring Premium Features
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Header */}
         <div className="mb-8">

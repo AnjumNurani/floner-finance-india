@@ -84,7 +84,6 @@ const Subscription = () => {
 
     if (coupon.toUpperCase() === 'ZEN20' && (planId === 'pro' || planId === 'ultra')) {
       applyPromo(planId);
-      // Show no popup now, just banner always at the top
       return;
     }
     
