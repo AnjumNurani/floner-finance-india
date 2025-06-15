@@ -1,6 +1,8 @@
-
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
+import { PlusCircle } from 'lucide-react';
 
 const CashFlow = () => {
   const { user, transactions, monthlyIncome, monthlyExpense } = useUser();
@@ -138,7 +140,7 @@ const CashFlow = () => {
                 )}
               </h2>
               
-              <div className="flex space-x-2">
+              <div className="flex items-center space-x-2">
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
@@ -158,6 +160,12 @@ const CashFlow = () => {
                   <option value="amount">Amount</option>
                   <option value="description">Description</option>
                 </select>
+                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50">
+                  <Link to="/add-transaction">
+                    <PlusCircle className="h-4 w-4" />
+                    <span>Add Transaction</span>
+                  </Link>
+                </Button>
               </div>
             </div>
 
