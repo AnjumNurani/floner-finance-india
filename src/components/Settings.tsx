@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 
@@ -67,8 +66,8 @@ const Settings = () => {
     if (confirm) {
       const secondConfirm = window.confirm('This is your final warning. Type DELETE to confirm.');
       if (secondConfirm) {
-        localStorage.removeItem('floner-user');
-        localStorage.removeItem('floner-onboarded');
+        localStorage.removeItem('fenqro-user');
+        localStorage.removeItem('fenqro-onboarded');
         setUser(null);
         alert('Your account has been deleted.');
       }
@@ -112,32 +111,6 @@ const Settings = () => {
                 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-4">Connected Accounts</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between p-4 border rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-semibold">
-                            SBI
-                          </div>
-                          <div>
-                            <p className="font-medium">SBI Main Account</p>
-                            <p className="text-sm text-gray-500">••••3456 • Connected</p>
-                          </div>
-                        </div>
-                        <button className="text-red-600 hover:text-red-700 text-sm">
-                          Disconnect
-                        </button>
-                      </div>
-                      
-                      {user?.subscriptionPlan !== 'free' && (
-                        <button className="w-full border-2 border-dashed border-gray-300 rounded-lg p-4 text-gray-500 hover:border-green-500 hover:text-green-600 transition-colors duration-200">
-                          + Connect Another Account
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
                     <h3 className="text-lg font-medium text-gray-900 mb-4">Data Export</h3>
                     {user?.subscriptionPlan === 'ultra' ? (
                       <div className="space-y-3">
@@ -156,6 +129,23 @@ const Settings = () => {
                         </a>
                       </div>
                     )}
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-900 mb-4">App Information</h3>
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="space-y-2">
+                        <p className="text-sm text-gray-600">
+                          <span className="font-medium">Version:</span> 1.0.0
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-medium">Last Updated:</span> June 2024
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-medium">Build:</span> Production
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -373,7 +363,7 @@ const Settings = () => {
                       </a>
                       
                       <a
-                        href="mailto:support@floner.com"
+                        href="mailto:support@fenqro.com"
                         className="block p-3 border rounded-lg hover:bg-gray-50 transition-colors duration-200"
                       >
                         <div className="flex items-center space-x-3">
