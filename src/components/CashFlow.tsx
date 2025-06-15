@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
-import { PlusCircle } from 'lucide-react';
+import { PlusCircle, Plus } from 'lucide-react';
 
 const CashFlow = () => {
   const { user, transactions, monthlyIncome, monthlyExpense } = useUser();
@@ -47,6 +47,16 @@ const CashFlow = () => {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-jade-800">Cash Flow Analysis</h1>
         <p className="text-jade-600 mt-1">Track your income and expenses with detailed insights</p>
+      </div>
+
+      {/* Add Transaction Floating Button for mobile, Button for desktop */}
+      <div className="fixed bottom-5 right-5 z-40 md:hidden">
+        <Button variant="default" size="icon" asChild className="rounded-full shadow-lg bg-jade-500 hover:bg-jade-600 text-nude-50">
+          <Link to="/add-transaction">
+            <Plus className="h-7 w-7" />
+            <span className="sr-only">Add Transaction</span>
+          </Link>
+        </Button>
       </div>
 
       {/* Summary Cards */}
@@ -160,10 +170,10 @@ const CashFlow = () => {
                   <option value="amount">Amount</option>
                   <option value="description">Description</option>
                 </select>
-                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 hidden md:inline-flex">
+                {/* Compact "+" button for add transaction, always visible on desktop */}
+                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 hidden md:inline-flex rounded-full px-3 py-2">
                   <Link to="/add-transaction">
-                    <PlusCircle className="h-4 w-4" />
-                    <span>Add Transaction</span>
+                    <Plus className="h-5 w-5" aria-hidden />
                   </Link>
                 </Button>
               </div>
