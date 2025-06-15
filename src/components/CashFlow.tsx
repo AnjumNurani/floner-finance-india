@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -176,11 +175,11 @@ const CashFlow = () => {
                   <option value="description">Description</option>
                 </select>
                 
-                {/* Add Transaction Button - Right inside the transactions section */}
-                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 flex items-center">
+                {/* Add Transaction Button - Icon only */}
+                <Button asChild size="icon" className="bg-jade-500 hover:bg-jade-600 text-nude-50">
                   <Link to="/add-transaction">
-                    <Plus className="h-5 w-5 mr-2" />
-                    Add Transaction
+                    <Plus className="h-5 w-5" />
+                    <span className="sr-only">Add Transaction</span>
                   </Link>
                 </Button>
               </div>
