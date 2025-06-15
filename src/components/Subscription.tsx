@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Subscription = () => {
       price: 0,
       period: 'Forever',
       features: [
-        '1 bank account connection',
+        'Manual transaction entry',
         '7 days transaction history',
         'Basic expense summary',
         'Ad-supported experience',
@@ -39,7 +40,7 @@ const Subscription = () => {
       price: 98,
       period: 'per month',
       features: [
-        'Up to 3 bank accounts',
+        'Manual transaction tracking',
         '30 days transaction history',
         'Expense overview & insights',
         'Budget & goals overview',
@@ -61,7 +62,7 @@ const Subscription = () => {
       price: 198,
       period: 'per month',
       features: [
-        'Unlimited bank accounts',
+        'Advanced transaction tracking',
         '90 days transaction history',
         'Detailed expense & income insights',
         'Advanced budget & goals tracking',
@@ -228,7 +229,6 @@ const Subscription = () => {
             </thead>
             <tbody>
               {[
-                ['Bank Accounts', '1', '3', 'Unlimited'],
                 ['Transaction History', '7 days', '30 days', '90 days'],
                 ['Budget & Goals', '✗', 'Basic', 'Advanced'],
                 ['Tax Calculator', '✗', '✓', '✓ + Suggestions'],
@@ -259,7 +259,7 @@ const Subscription = () => {
             },
             {
               q: "Is my financial data secure?",
-              a: "Absolutely! We use bank-level encryption and security measures to protect your financial information. We never store your banking passwords."
+              a: "Absolutely! We use bank-level encryption and security measures to protect your financial information. All data is stored securely."
             },
             {
               q: "Can I upgrade or downgrade my plan?",

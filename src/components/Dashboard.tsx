@@ -80,12 +80,6 @@ const Dashboard = () => {
               <p className="text-jade-600 text-sm">Current Balance</p>
               <h2 className="text-3xl font-bold">₹{balance.toLocaleString('en-IN')}</h2>
             </div>
-            <div className="text-right">
-              <p className="text-jade-600 text-sm">Connected Account</p>
-              <div className="mt-1 bg-nude-200/50 border border-nude-200 rounded-lg px-3 py-1 text-jade-700/80 text-sm text-center cursor-not-allowed">
-                Coming Soon
-              </div>
-            </div>
           </div>
 
           {/* Mini Stats */}
@@ -194,7 +188,7 @@ const Dashboard = () => {
               <div className="bg-jade-100 rounded-xl p-6 text-jade-700 border border-jade-200">
                 <h3 className="font-semibold mb-2">Upgrade to Pro!</h3>
                 <p className="text-sm text-jade-600 mb-3">
-                  Unlock advanced features like multiple accounts, detailed insights, and more!
+                  Unlock advanced features like detailed insights, extended transaction history, and more!
                 </p>
                 <Link
                   to="/subscription"
