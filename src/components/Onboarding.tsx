@@ -8,7 +8,7 @@ const Onboarding = () => {
 
   const steps = [
     {
-      title: "Welcome to Enro",
+      title: "Welcome to Zenqrow",
       description: "Your personal finance manager for smarter money decisions",
       image: "💰",
       color: "from-green-400 to-emerald-500"
@@ -95,7 +95,7 @@ const Onboarding = () => {
 
         {/* Enro Branding */}
         <div className="text-center mt-8">
-          <h2 className="text-2xl font-bold text-green-600">Enro</h2>
+          <h2 className="text-2xl font-bold text-green-600">Zenqrow</h2>
           <p className="text-gray-600">Smart Finance, Smarter You</p>
         </div>
       </div>

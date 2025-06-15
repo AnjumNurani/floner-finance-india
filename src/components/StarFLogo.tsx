@@ -24,7 +24,7 @@ const StarFLogo: React.FC<StarFLogoProps> = ({ size = 32, className = "" }) => {
             lineHeight: 1
           }}
         >
-          E
+          Z
         </span>
       </div>
     </div>

@@ -28,19 +28,19 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
           <div className="p-4 bg-jade-50 rounded-lg">
             <h3 className="font-semibold text-jade-700 mb-2">Quick Help</h3>
             <p className="text-sm text-jade-600">
-              Need assistance with Enro? Our support team is here to help you manage your finances better.
+              Need assistance with Zenqrow? Our support team is here to help you manage your finances better.
             </p>
           </div>
 
           <div className="space-y-3">
             <a
-              href="mailto:support@enro.com"
+              href="mailto:support@zenqrow.com"
               className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
             >
               <Mail className="w-5 h-5 text-jade-600 mr-3" />
               <div>
                 <p className="font-medium text-gray-900">Email Support</p>
-                <p className="text-sm text-gray-500">support@enro.com</p>
+                <p className="text-sm text-gray-500">support@zenqrow.com</p>
               </div>
             </a>
 

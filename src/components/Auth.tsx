@@ -47,7 +47,7 @@ const Auth = () => {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="text-4xl mb-2">💰</div>
-          <h1 className="text-3xl font-bold text-green-600">Enro</h1>
+          <h1 className="text-3xl font-bold text-green-600">Zenqrow</h1>
           <p className="text-gray-600">Your Smart Finance Manager</p>
         </div>
 
@@ -159,7 +159,7 @@ const Auth = () => {
                 const demoUser = {
                   id: 'demo',
                   name: 'Demo User',
-                  email: 'demo@enro.com',
+                  email: 'demo@zenqrow.com',
                   phone: '+91 9876543210',
                   subscriptionPlan: 'free' as const,
                   connectedAccounts: 1
