@@ -16,6 +16,7 @@ import TermsOfService from '../components/TermsOfService';
 import Navbar from '../components/Navbar';
 import BottomNavigation from '../components/BottomNavigation';
 import { useUser } from '../context/UserContext';
+import PromoPopup from '../components/PromoPopup';
 
 const Index = () => {
   const { user, isOnboarded } = useUser();
@@ -47,6 +48,7 @@ const Index = () => {
         </Routes>
       </div>
       <BottomNavigation />
+      <PromoPopup />
     </div>
   );
 };

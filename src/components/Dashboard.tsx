@@ -1,11 +1,10 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 
 const Dashboard = () => {
   const { user, balance, transactions, monthlyIncome, monthlyExpense } = useUser();
-  const [selectedAccount, setSelectedAccount] = useState('SBI Main');
 
   const savingsRate = monthlyIncome > 0 ? ((monthlyIncome - monthlyExpense) / monthlyIncome) * 100 : 0;
   const financialHealthScore = Math.min(100, Math.max(0, 50 + savingsRate));
@@ -37,19 +36,9 @@ const Dashboard = () => {
             </div>
             <div className="text-right">
               <p className="text-jade-600 text-sm">Connected Account</p>
-              <select
-                value={selectedAccount}
-                onChange={(e) => setSelectedAccount(e.target.value)}
-                className="bg-nude-50 border border-nude-200 rounded-lg px-3 py-1 text-jade-700 text-sm"
-              >
-                <option value="SBI Main">SBI Main</option>
-                {user?.subscriptionPlan !== 'free' && (
-                  <>
-                    <option value="HDFC Savings">HDFC Savings</option>
-                    <option value="ICICI Current">ICICI Current</option>
-                  </>
-                )}
-              </select>
+              <div className="mt-1 bg-nude-200/50 border border-nude-200 rounded-lg px-3 py-1 text-jade-700/80 text-sm text-center cursor-not-allowed">
+                Coming Soon
+              </div>
             </div>
           </div>
 

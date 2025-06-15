@@ -8,6 +8,7 @@ interface User {
   subscriptionPlan: 'free' | 'pro' | 'ultra';
   connectedAccounts: number;
   profilePicture?: string;
+  subscriptionExpiry?: string;
 }
 
 interface Transaction {
@@ -31,6 +32,7 @@ interface UserContextType {
   setIsOnboarded: (value: boolean) => void;
   addTransaction: (transaction: Omit<Transaction, 'id'>) => void;
   updateBalance: (amount: number) => void;
+  applyPromo: (plan: 'pro' | 'ultra') => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -61,6 +63,19 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setBalance(prev => prev + amount);
   };
 
+  const applyPromo = (plan: 'pro' | 'ultra') => {
+    if (user) {
+      const expiryDate = new Date('2025-09-20');
+      const updatedUser = {
+        ...user,
+        subscriptionPlan: plan,
+        subscriptionExpiry: expiryDate.toISOString(),
+      };
+      setUser(updatedUser);
+      localStorage.setItem('enro-user', JSON.stringify(updatedUser));
+    }
+  };
+
   useEffect(() => {
     // Check if user has seen onboarding
     const hasSeenOnboarding = localStorage.getItem('enro-onboarded');
@@ -71,7 +86,18 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Check if user is logged in
     const savedUser = localStorage.getItem('enro-user');
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      const parsedUser = JSON.parse(savedUser) as User;
+      
+      // Check for subscription expiry
+      if (parsedUser.subscriptionExpiry) {
+        const expiryDate = new Date(parsedUser.subscriptionExpiry);
+        if (new Date() > expiryDate) {
+          parsedUser.subscriptionPlan = 'free';
+          delete parsedUser.subscriptionExpiry;
+          localStorage.setItem('enro-user', JSON.stringify(parsedUser));
+        }
+      }
+      setUser(parsedUser);
     }
   }, []);
 
@@ -86,7 +112,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser,
       setIsOnboarded,
       addTransaction,
-      updateBalance
+      updateBalance,
+      applyPromo,
     }}>
       {children}
     </UserContext.Provider>

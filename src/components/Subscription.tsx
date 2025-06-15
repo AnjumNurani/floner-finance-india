@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
 
 const Subscription = () => {
-  const { user, setUser } = useUser();
+  const { user, setUser, applyPromo } = useUser();
   const [selectedPlan, setSelectedPlan] = useState(user?.subscriptionPlan || 'free');
+  const [coupon, setCoupon] = useState('');
 
   const plans = [
     {
@@ -78,6 +79,12 @@ const Subscription = () => {
 
   const handleUpgrade = (planId: string) => {
     if (planId === 'free') return;
+
+    if (coupon.toUpperCase() === 'ZEN20' && (planId === 'pro' || planId === 'ultra')) {
+      applyPromo(planId);
+      alert(`Successfully upgraded to ${planId.toUpperCase()} plan with promo code! 🎉`);
+      return;
+    }
     
     // Simulate payment process
     const confirmUpgrade = window.confirm(`Upgrade to ${planId.toUpperCase()} plan for ₹${plans.find(p => p.id === planId)?.price}/month?`);
@@ -85,7 +92,7 @@ const Subscription = () => {
     if (confirmUpgrade) {
       const updatedUser = { ...user!, subscriptionPlan: planId as 'free' | 'pro' | 'ultra' };
       setUser(updatedUser);
-      localStorage.setItem('floner-user', JSON.stringify(updatedUser));
+      localStorage.setItem('enro-user', JSON.stringify(updatedUser));
       alert(`Successfully upgraded to ${planId.toUpperCase()} plan! 🎉`);
     }
   };
@@ -98,6 +105,20 @@ const Subscription = () => {
           Unlock powerful features to take control of your finances. 
           From basic tracking to advanced analytics and tax optimization.
         </p>
+      </div>
+
+      <div className="max-w-sm mx-auto mb-10 text-center">
+        <label htmlFor="coupon" className="block text-lg font-semibold text-gray-800 mb-3">
+          Have a promotional code?
+        </label>
+        <input
+          id="coupon"
+          type="text"
+          value={coupon}
+          onChange={(e) => setCoupon(e.target.value)}
+          placeholder="Enter ZEN20 here"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-jade-500 focus:border-transparent"
+        />
       </div>
 
       {/* Current Plan Indicator */}

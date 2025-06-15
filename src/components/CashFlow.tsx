@@ -189,8 +189,6 @@ const CashFlow = () => {
                         <span>{transaction.category}</span>
                         <span>•</span>
                         <span>{transaction.date}</span>
-                        <span>•</span>
-                        <span>{transaction.account}</span>
                       </div>
                     </div>
                   </div>
