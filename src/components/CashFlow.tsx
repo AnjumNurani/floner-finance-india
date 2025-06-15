@@ -51,12 +51,6 @@ const CashFlow = () => {
             <h1 className="text-3xl font-bold text-jade-800">Cash Flow Analysis</h1>
             <p className="text-jade-600 mt-1">Track your income and expenses with detailed insights</p>
           </div>
-          <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 hidden md:flex">
-            <Link to="/add-transaction">
-              <PlusCircle className="h-5 w-5 mr-2" />
-              Add Transaction
-            </Link>
-          </Button>
         </div>
       </div>
 
@@ -181,10 +175,12 @@ const CashFlow = () => {
                   <option value="amount">Amount</option>
                   <option value="description">Description</option>
                 </select>
-                {/* Compact "+" button for add transaction, always visible on desktop */}
-                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 hidden md:inline-flex rounded-full px-3 py-2">
+                
+                {/* Add Transaction Button - Right inside the transactions section */}
+                <Button asChild className="bg-jade-500 hover:bg-jade-600 text-nude-50 flex items-center">
                   <Link to="/add-transaction">
-                    <Plus className="h-5 w-5" aria-hidden />
+                    <Plus className="h-5 w-5 mr-2" />
+                    Add Transaction
                   </Link>
                 </Button>
               </div>
