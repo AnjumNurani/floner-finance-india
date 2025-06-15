@@ -42,22 +42,22 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-nude-50 to-jade-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="text-4xl mb-2">💰</div>
-          <h1 className="text-3xl font-bold text-green-600">Zenqrow</h1>
-          <p className="text-gray-600">Your Smart Finance Manager</p>
+          <h1 className="text-3xl font-bold text-jade-600">Fenqro</h1>
+          <p className="text-nude-600">Your Smart Finance Manager</p>
         </div>
 
         {/* Auth Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="flex rounded-lg bg-gray-100 p-1 mb-6">
+          <div className="flex rounded-lg bg-nude-100 p-1 mb-6">
             <button
               onClick={() => setIsLogin(true)}
               className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                isLogin ? 'bg-green-500 text-white shadow-sm' : 'text-gray-600'
+                isLogin ? 'bg-jade-500 text-white shadow-sm' : 'text-nude-600'
               }`}
             >
               Login
@@ -65,7 +65,7 @@ const Auth = () => {
             <button
               onClick={() => setIsLogin(false)}
               className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                !isLogin ? 'bg-green-500 text-white shadow-sm' : 'text-gray-600'
+                !isLogin ? 'bg-jade-500 text-white shadow-sm' : 'text-nude-600'
               }`}
             >
               Sign Up
@@ -146,20 +146,20 @@ const Auth = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-200 transform hover:scale-105 shadow-lg"
+              className="w-full bg-gradient-to-r from-jade-500 to-jade-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-jade-600 hover:to-jade-700 transition-all duration-200 transform hover:scale-105 shadow-lg"
             >
               {isLogin ? 'Login' : 'Create Account'}
             </button>
           </form>
 
           {/* Demo Login */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="mt-6 pt-6 border-t border-nude-200">
             <button
               onClick={() => {
                 const demoUser = {
                   id: 'demo',
                   name: 'Demo User',
-                  email: 'demo@zenqrow.com',
+                  email: 'demo@fenqro.com',
                   phone: '+91 9876543210',
                   subscriptionPlan: 'free' as const,
                   connectedAccounts: 1
@@ -167,7 +167,7 @@ const Auth = () => {
                 localStorage.setItem('enro-user', JSON.stringify(demoUser));
                 setUser(demoUser);
               }}
-              className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition-all duration-200"
+              className="w-full bg-nude-100 text-nude-700 py-2 px-4 rounded-lg font-medium hover:bg-nude-200 transition-all duration-200"
             >
               Try Demo Account
             </button>

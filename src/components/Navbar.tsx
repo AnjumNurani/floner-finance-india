@@ -39,7 +39,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                 <StarFLogo size={36} />
-                <span className="text-xl font-bold text-jade-600">Zenqrow</span>
+                <span className="text-xl font-bold text-jade-600">Fenqro</span>
               </Link>
             </div>
 

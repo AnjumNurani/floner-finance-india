@@ -8,28 +8,28 @@ const Onboarding = () => {
 
   const steps = [
     {
-      title: "Welcome to Zenqrow",
+      title: "Welcome to Fenqro",
       description: "Your personal finance manager for smarter money decisions",
       image: "💰",
-      color: "from-green-400 to-emerald-500"
+      color: "from-jade-400 to-jade-500"
     },
     {
       title: "Track Your Expenses",
       description: "Connect your bank accounts and monitor every transaction seamlessly",
       image: "📊",
-      color: "from-emerald-400 to-teal-500"
+      color: "from-jade-400 to-jade-500"
     },
     {
       title: "Plan Your Budget",
       description: "Set budgets, create goals, and achieve your financial dreams",
       image: "🎯",
-      color: "from-teal-400 to-cyan-500"
+      color: "from-jade-400 to-jade-500"
     },
     {
       title: "Calculate Your Taxes",
       description: "Get accurate Indian income tax calculations and save money legally",
       image: "🧮",
-      color: "from-cyan-400 to-blue-500"
+      color: "from-jade-400 to-jade-500"
     }
   ];
 
@@ -48,7 +48,7 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-nude-50 to-jade-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Progress Indicator */}
         <div className="flex justify-center mb-8">
@@ -57,7 +57,7 @@ const Onboarding = () => {
               <div
                 key={index}
                 className={`h-2 w-8 rounded-full transition-all duration-300 ${
-                  index <= currentStep ? 'bg-green-500' : 'bg-gray-300'
+                  index <= currentStep ? 'bg-jade-500' : 'bg-nude-300'
                 }`}
               />
             ))}
@@ -93,10 +93,10 @@ const Onboarding = () => {
           </div>
         </div>
 
-        {/* Enro Branding */}
+        {/* Fenqro Branding */}
         <div className="text-center mt-8">
-          <h2 className="text-2xl font-bold text-green-600">Zenqrow</h2>
-          <p className="text-gray-600">Smart Finance, Smarter You</p>
+          <h2 className="text-2xl font-bold text-jade-600">Fenqro</h2>
+          <p className="text-nude-600">Smart Finance, Smarter You</p>
         </div>
       </div>
     </div>
